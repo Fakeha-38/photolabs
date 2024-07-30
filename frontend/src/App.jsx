@@ -1,9 +1,8 @@
 import React from 'react';
-import PhotoList from './components/PhotoList';
-import PhotoListItem from './components/PhotoListItem';
-import TopicList from './components/TopicList';
 import './App.scss';
+import PhotoList from './components/PhotoList';
 import TopNavigation from './components/TopNavigationBar';
+import HomeRoute from './components/HomeRoute';
 
 // const photos = [...Array(3)].map((_, index) => 
 //   <PhotoListItem sampleData={sampleDataForPhotoListItem} key={index} />
@@ -15,9 +14,10 @@ const App = () => {
   return (
     <div className="App">
       {/* <div>{photos}</div> */}
-      <TopNavigation />
+      {/* <TopNavigation /> */}
       {/* <TopicList /> */}
-      <PhotoList />
+      {/* <PhotoList /> */}
+      <HomeRoute />
     </div>
   );
 };
