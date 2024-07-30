@@ -56,8 +56,8 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = () => {
-  const photos = sampleDataForPhotoList.map((item, index) => {
+const PhotoList = ({photos}) => {
+  const photosMap = photos.map((item, index) => {
     return(
       <PhotoListItem key={item.id} sampleData={item} />
     );    
@@ -66,7 +66,7 @@ const PhotoList = () => {
   return (
     <ul className="photo-list">
       {/* Insert React */}
-        {photos}
+        {photosMap}
     </ul>
   );
 };

@@ -20,8 +20,8 @@ const sampleDataForTopicList = [
   },
 ];
 
-const TopicList = () => {
-  const topics = sampleDataForTopicList.map((topic) => {
+const TopicList = ({topics}) => {
+  const topicsMap = topics.map((topic) => {
     return(
       <TopicListItem key={topic.id} topic={topic} />
     )
@@ -30,7 +30,7 @@ const TopicList = () => {
   return (
     <div className="top-nav-bar__topic-list">
       {/* Insert React */}
-      {topics}
+      {topicsMap}
     </div>
   );
 };

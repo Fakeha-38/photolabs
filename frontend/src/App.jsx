@@ -3,6 +3,8 @@ import './App.scss';
 import PhotoList from './components/PhotoList';
 import TopNavigation from './components/TopNavigationBar';
 import HomeRoute from './components/HomeRoute';
+import photos from './mocks/photos';
+import topics from './mocks/topics';
 
 // const photos = [...Array(3)].map((_, index) => 
 //   <PhotoListItem sampleData={sampleDataForPhotoListItem} key={index} />
@@ -14,10 +16,10 @@ const App = () => {
   return (
     <div className="App">
       {/* <div>{photos}</div> */}
-      {/* <TopNavigation /> */}
+      <TopNavigation topics={topics} />
       {/* <TopicList /> */}
-      {/* <PhotoList /> */}
-      <HomeRoute />
+      <PhotoList photos={photos} />
+      {/* <HomeRoute /> */}
     </div>
   );
 };
