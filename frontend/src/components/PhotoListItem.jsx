@@ -9,7 +9,7 @@ const PhotoListItem = ({sampleData}) => {
   const [fav, setFav] = useState(false);
   const switchFav = () => setFav(fav === true ? false : true);
   return (
-    <div className="photo-list__item">
+    <li className="photo-list__item">
       <PhotoFavButton fav={fav} switchFav={switchFav} />
       <img src={urls.regular} alt={`image taken by ${user.username}`} className="photo-list__image" />
       <div className="photo-list__user-details">
@@ -19,7 +19,7 @@ const PhotoListItem = ({sampleData}) => {
           <p className="photo-list__user-location">{location.city}, {location.country}</p>
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 

@@ -55,12 +55,14 @@ const sampleDataForPhotoList = [
     },
   },
 ];
-const photos = sampleDataForPhotoList.map((item, index) => {
+
+const PhotoList = () => {
+  const photos = sampleDataForPhotoList.map((item, index) => {
     return(
       <PhotoListItem key={item.id} sampleData={item} />
     );    
   });
-const PhotoList = () => {
+  
   return (
     <ul className="photo-list">
       {/* Insert React */}
