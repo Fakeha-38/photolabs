@@ -4,9 +4,9 @@ import PhotoList from '../components/PhotoList';
 import { useState } from "react";
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({topics, photos, photoClick}) => {
+const HomeRoute = ({topics, photos, displayModal}) => {
   const [favourites, setFavourites] = useState([]);
-  const switchFav = (photo) => {
+  const toggleFav = (photo) => {
     setFavourites(favourites => {
       if(favourites.includes(photo)) {
         return favourites.filter(item => item !== photo);
@@ -18,8 +18,8 @@ const HomeRoute = ({topics, photos, photoClick}) => {
   return (
     <div className="home-route">
       {/* Insert React */}
-      <TopNavigation topics={topics} isFavPhotoExist={favourites.length !== 0 ? true : false} />
-      <PhotoList photos={photos} fav={favourites} switchFav={switchFav} photoClick={photoClick} />
+      <TopNavigation topics={topics} isFavPhotoExist={favourites.length !== 0} />
+      <PhotoList photos={photos} fav={favourites} toggleFav={toggleFav} displayModal={displayModal} />
     </div>
   );
 };

@@ -10,9 +10,11 @@ import { useState } from "react";
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const [isModalOpen, setIsModelOpen] = useState(false);
-  const photoClick = () => {
-    console.log("Image has been clicked");
+  const displayModal = () => {
     setIsModelOpen(true);
+  }
+  const closeModal = () => {
+    setIsModelOpen(false);
   }
   return (
     <div className="App">
@@ -20,8 +22,8 @@ const App = () => {
       {/* <TopNavigation topics={topics} /> */}
       {/* <TopicList /> */}
       {/* <PhotoList photos={photos} /> */}
-      <HomeRoute photos={photos} topics={topics} isModalOpen={isModalOpen} photoClick={photoClick} />
-      {isModalOpen && <PhotoDetailsModal />}
+      <HomeRoute photos={photos} topics={topics} displayModal={displayModal} closeModal={closeModal} />
+      {isModalOpen && <PhotoDetailsModal closeModal={closeModal} />}
     </div>
   );
 };

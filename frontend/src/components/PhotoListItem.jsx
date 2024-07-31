@@ -3,13 +3,13 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 import { useState } from "react";
 
-const PhotoListItem = ({singlePhoto, fav, switchFav, photoClick}) => {
+const PhotoListItem = ({singlePhoto, fav, toggleFav, displayModal}) => {
   /* Insert React */
   const {id, urls, user, profile, location} = singlePhoto;
   return (
     <li className="photo-list__item">
-      <PhotoFavButton fav={fav} switchFav={(switchFav)}  singlePhoto={singlePhoto} />
-      <img src={urls.regular} alt={`image taken by ${user.username}`} className="photo-list__image" onClick={() => photoClick()} />
+      <PhotoFavButton fav={fav} toggleFav={(toggleFav)}  singlePhoto={singlePhoto} />
+      <img src={urls.regular} alt={`image taken by ${user.username}`} className="photo-list__image" onClick={() => displayModal()} />
       <div className="photo-list__user-details">
         <img src={user.profile} alt={`${user.username} profile img`} className="photo-list__user-profile" />
         <div className="photo-list__user-info">
