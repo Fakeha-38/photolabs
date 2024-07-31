@@ -3,12 +3,12 @@ import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 import '../styles/TopNavigationBar.scss'
 
-const TopNavigation = ({topics, fav}) => {
+const TopNavigation = ({topics, isFavPhotoExist}) => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <span><TopicList topics={topics} /></span>
-      <span><FavBadge isFavPhotoExist={fav.length !== 0 ? true : false} /></span>
+      <span><FavBadge isFavPhotoExist={isFavPhotoExist} /></span>
     </div>
   )
 }
