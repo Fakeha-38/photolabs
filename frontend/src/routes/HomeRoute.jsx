@@ -4,11 +4,10 @@ import PhotoList from '../components/PhotoList';
 import { useState } from "react";
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({topics, photos}) => {
+const HomeRoute = ({topics, photos, photoClick}) => {
   const [favourites, setFavourites] = useState([]);
   const switchFav = (photo) => {
     setFavourites(favourites => {
-      // console.log("My fav array: ", favourites);
       if(favourites.includes(photo)) {
         return favourites.filter(item => item !== photo);
       } else {
@@ -20,7 +19,7 @@ const HomeRoute = ({topics, photos}) => {
     <div className="home-route">
       {/* Insert React */}
       <TopNavigation topics={topics} isFavPhotoExist={favourites.length !== 0 ? true : false} />
-      <PhotoList photos={photos} fav={favourites} switchFav={switchFav} />
+      <PhotoList photos={photos} fav={favourites} switchFav={switchFav} photoClick={photoClick} />
     </div>
   );
 };
