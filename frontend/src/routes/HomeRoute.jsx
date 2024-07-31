@@ -4,7 +4,7 @@ import PhotoList from '../components/PhotoList';
 import { useState } from "react";
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({topics, photos, displayModal}) => {
+const HomeRoute = ({topics, photos, openModal}) => {
   const [favourites, setFavourites] = useState([]);
   const toggleFav = (photo) => {
     setFavourites(favourites => {
@@ -19,7 +19,7 @@ const HomeRoute = ({topics, photos, displayModal}) => {
     <div className="home-route">
       {/* Insert React */}
       <TopNavigation topics={topics} isFavPhotoExist={favourites.length !== 0} />
-      <PhotoList photos={photos} fav={favourites} toggleFav={toggleFav} displayModal={displayModal} />
+      <PhotoList photos={photos} fav={favourites} toggleFav={toggleFav} openModal={openModal} />
     </div>
   );
 };
