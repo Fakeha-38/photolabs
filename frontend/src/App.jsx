@@ -9,6 +9,17 @@ import { useState } from "react";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+  const [favourites, setFavourites] = useState([]);
+  const toggleFav = (photo) => {
+    setFavourites(favourites => {
+      if(favourites.includes(photo)) {
+        return favourites.filter(item => item !== photo);
+      } else {
+        return [...favourites, photo];
+      }
+    });
+  };
+  // console.log("direct photos object", photos);
   const [isModalOpen, setIsModelOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
@@ -19,8 +30,7 @@ const App = () => {
   const closeModal = () => {
     setIsModelOpen(false);
     setSelectedPhoto(null);
-    console.log("selected photo after close: ", selectedPhoto);
-
+    // console.log("selected photo after close: ", selectedPhoto);
   }
   return (
     <div className="App">
@@ -28,8 +38,8 @@ const App = () => {
       {/* <TopNavigation topics={topics} /> */}
       {/* <TopicList /> */}
       {/* <PhotoList photos={photos} /> */}
-      <HomeRoute photos={photos} topics={topics} openModal={openModal} closeModal={closeModal} />
-      {isModalOpen && <PhotoDetailsModal closeModal={closeModal} selectedPhoto={selectedPhoto} />}
+      <HomeRoute photos={photos} topics={topics} openModal={openModal} closeModal={closeModal} favourites={favourites} toggleFav={toggleFav} />
+      {isModalOpen && <PhotoDetailsModal closeModal={closeModal} selectedPhoto={selectedPhoto} fav={favourites} toggleFav={toggleFav} openModal={openModal} />}
     </div>
   );
 };

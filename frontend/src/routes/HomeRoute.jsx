@@ -4,17 +4,17 @@ import PhotoList from '../components/PhotoList';
 import { useState } from "react";
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = ({topics, photos, openModal}) => {
-  const [favourites, setFavourites] = useState([]);
-  const toggleFav = (photo) => {
-    setFavourites(favourites => {
-      if(favourites.includes(photo)) {
-        return favourites.filter(item => item !== photo);
-      } else {
-        return [...favourites, photo];
-      }
-    });
-  };
+const HomeRoute = ({topics, photos, openModal, favourites, toggleFav}) => {
+  // const [favourites, setFavourites] = useState([]);
+  // const toggleFav = (photo) => {
+  //   setFavourites(favourites => {
+  //     if(favourites.includes(photo)) {
+  //       return favourites.filter(item => item !== photo);
+  //     } else {
+  //       return [...favourites, photo];
+  //     }
+  //   });
+  // };
   return (
     <div className="home-route">
       {/* Insert React */}
