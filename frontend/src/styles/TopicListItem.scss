@@ -13,4 +13,12 @@
     text-decoration: overline;
     color: #111;
   }
+  &:active {
+    text-decoration: overline;
+    color: #000;
+  }
+  &:focus {
+    text-decoration: overline;
+    color: #000;
+  }
 }
