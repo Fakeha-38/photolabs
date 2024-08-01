@@ -6,7 +6,6 @@ import photos from './mocks/photos';
 import topics from './mocks/topics';
 import { useState } from "react";
 
-
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const [favourites, setFavourites] = useState([]);
@@ -21,7 +20,6 @@ const App = () => {
       }
     });
   };
-  // console.log("direct photos object", photos);
   const [isModalOpen, setIsModelOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
@@ -32,7 +30,6 @@ const App = () => {
   const closeModal = () => {
     setIsModelOpen(false);
     setSelectedPhoto(null);
-    // console.log("selected photo after close: ", selectedPhoto);
   }
   return (
     <div className="App">
@@ -41,7 +38,7 @@ const App = () => {
       {/* <TopicList /> */}
       {/* <PhotoList photos={photos} /> */}
       <HomeRoute photos={photos} topics={topics} openModal={openModal} closeModal={closeModal} favourites={favourites} toggleFav={toggleFav} />
-      {isModalOpen && <PhotoDetailsModal closeModal={closeModal} selectedPhoto={selectedPhoto} fav={favourites} toggleFav={toggleFav} openModal={openModal} />}
+      {isModalOpen && <PhotoDetailsModal closeModal={closeModal} selectedPhoto={selectedPhoto} favourites={favourites} toggleFav={toggleFav} openModal={openModal} />}
     </div>
   );
 };
