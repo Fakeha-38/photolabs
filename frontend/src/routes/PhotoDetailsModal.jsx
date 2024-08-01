@@ -7,6 +7,7 @@ import closeSymbol from '../assets/closeSymbol.svg';
 const PhotoDetailsModal = ({closeModal, selectedPhoto, fav, toggleFav, openModal}) => {
   const {id, urls, user, profile, location, similar_photos} = selectedPhoto;
   const similarPhotosArr = Object.values(similar_photos);
+  console.log("favorites in the model", fav );
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={() => closeModal()}>
@@ -14,7 +15,7 @@ const PhotoDetailsModal = ({closeModal, selectedPhoto, fav, toggleFav, openModal
       </button>
       <div className="photo-details-modal__top-bar">
         <article className="photo-details-modal__item">
-          <PhotoFavButton fav={fav} toggleFav={(toggleFav)}  selectedPhoto={selectedPhoto} />
+          <PhotoFavButton fav={fav} toggleFav={toggleFav}  singlePhoto={selectedPhoto} />
           <img src={urls.full} alt={`image taken by ${user.username}`} className="photo-details-modal__image"/>
           <div className="photo-details-modal__photographer-info">
             <img src={user.profile} alt={`${user.username} profile img`} className="photo-details-modal__photographer-profile" />

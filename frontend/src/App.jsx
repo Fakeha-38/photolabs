@@ -13,8 +13,10 @@ const App = () => {
   const toggleFav = (photo) => {
     setFavourites(favourites => {
       if(favourites.includes(photo)) {
+        console.log("Favorites: ", favourites)
         return favourites.filter(item => item !== photo);
       } else {
+        console.log("Favorites: ", favourites)
         return [...favourites, photo];
       }
     });
