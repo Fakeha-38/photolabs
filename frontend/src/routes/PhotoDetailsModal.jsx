@@ -6,9 +6,11 @@ import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = ({closeModal, selectedPhoto, favourites, toggleFav, openModal}) => {
   const {id, urls, user, profile, location, similar_photos} = selectedPhoto;
+  // console.log("The selected object: ", selectedPhoto);
   // console.log("===== Selected in the model", selectedPhoto );
   const similarPhotosArr = Object.values(similar_photos);
-  // console.log("favorites in the model", fav );
+  // console.log("similar_photos in Modal ***", similar_photos );
+
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={() => closeModal()}>
