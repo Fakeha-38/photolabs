@@ -20,10 +20,10 @@ const sampleDataForTopicList = [
   },
 ];
 
-const TopicList = ({topics}) => {
+const TopicList = ({topics, navigateTopic}) => {
   const topicsMap = topics.map((topic) => {
     return(
-      <TopicListItem key={topic.id} topic={topic} />
+      <TopicListItem key={topic.id} topic={topic} navigateTopic={navigateTopic} />
     )
   });
   

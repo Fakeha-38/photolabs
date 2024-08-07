@@ -5,6 +5,7 @@ const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 const SET_PHOTOS = 'SET_PHOTOS';
 const SET_TOPICS = 'SET_TOPICS';
+const SET_TOPIC_ID = 'SET_TOPIC_ID';
 
 const reducer = (state, action) => {
   switch(action.type) {
@@ -42,11 +43,17 @@ const reducer = (state, action) => {
         ...state,
         topicData: action.payload
       }
-    default:
-      throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
+    case SET_TOPIC_ID:
+      return {
+        ...state,
+        topic_id: action.payload
+      }
+    // default:
+    //   throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
   }
 };
 const initialState = {
+  topic_id: null,
   photoData: [],
   topicData: [],
   favourites: [],
@@ -56,20 +63,37 @@ const initialState = {
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   useEffect(() => {
-    // use the fetch API to make an AJAX request to the backend
+
     fetch('http://localhost:8001/api/photos')
       .then(res => res.json())
       .then(data => {
         dispatch({type: SET_PHOTOS, payload: data})
-      });
+      })      .catch(error => {
+        console.log("API request for PHOTO DATA incomplete; Error occured: ", error);
+    });
+
     fetch('http://localhost:8001/api/topics')
       .then(res => res.json())
       .then(data => {
         dispatch({type: SET_TOPICS, payload: data})
-      });
+      })
+      .catch(error => {
+        console.log("API request for TOPIC DATA incomplete; Error occured: ", error);
+    });
 
   }, []);
-
+  useEffect(() => {
+    if (state.topic_id){
+      fetch(`http://localhost:8001/api/topics/photos/${state.topic_id}`)
+      .then(res => res.json())
+      .then(data => {
+        dispatch({type: SET_PHOTOS, payload: data})
+      })
+      .catch(error => {
+        console.log("API request AFTER TOPIC NAVIGATION incomplete; Error occured: ", error);
+    });
+    }
+  }, [state.topic_id]);
   const toggleFav = (photo) => {
     dispatch({type: TOGGLE_FAV, payload: photo});
   };
@@ -79,6 +103,10 @@ const useApplicationData = () => {
   const closeModal = () => {
     dispatch({type: CLOSE_MODAL, payload: null});
   }
+  const navigateTopic = (topic_id) => {
+    dispatch({type: SET_TOPIC_ID, payload: topic_id});
+  }
+
   // console.log("State photos data/Array: ", state.photoData);
   return {
     topics: state.topicData,
@@ -88,7 +116,8 @@ const useApplicationData = () => {
     openModal,
     closeModal,
     selectedPhoto: state.modalPhoto,
-    isModalOpen: state.isModalOpen
+    isModalOpen: state.isModalOpen,
+    navigateTopic
   }
 };
 

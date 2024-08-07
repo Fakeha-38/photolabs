@@ -7,10 +7,11 @@ const sampleDataForTopicListItem = {
   label: "Nature",
 };
 
-const TopicListItem = ({topic}) => {
+const TopicListItem = ({topic, navigateTopic}) => {
+  // console.log("topic object from topic list item: ", topic);
   return (
     <div className="topic-list__item">
-      <span>{topic.title}</span>
+      <span onClick={() => navigateTopic(topic.id)}>{topic.title}</span>
     </div>
   );
 };

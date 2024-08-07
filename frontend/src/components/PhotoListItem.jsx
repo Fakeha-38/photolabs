@@ -7,6 +7,7 @@ const PhotoListItem = ({singlePhoto, favourites, toggleFav, openModal}) => {
   /* Insert React */
   // console.log("******* singlePhoto in PhotoListItem: ", singlePhoto);
   const {id, urls, user, profile, location, similar_photos} = singlePhoto;
+  // console.log("PHOTO LIST ITEM: ", singlePhoto);
   return (
     <li className="photo-list__item">
       <PhotoFavButton favourites={favourites} toggleFav={toggleFav}  singlePhoto={singlePhoto} />
