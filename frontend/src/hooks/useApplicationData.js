@@ -22,10 +22,12 @@ const reducer = (state, action) => {
         }
       }
     case OPEN_MODAL:
+      // const photos = state.photoData;
+      const clickedPhoto = state.photoData.filter(photo => photo.id === action.payload);
       return {
         ...state,
         isModalOpen: true,
-        modalPhoto: action.payload
+        modalPhoto: clickedPhoto[0]
       }
     case CLOSE_MODAL:
       return {
@@ -67,7 +69,7 @@ const useApplicationData = () => {
     fetch('http://localhost:8001/api/photos')
       .then(res => res.json())
       .then(data => {
-        dispatch({type: SET_PHOTOS, payload: data})
+        dispatch({type: SET_PHOTOS, payload: data});
       })      .catch(error => {
         console.log("API request for PHOTO DATA incomplete; Error occured: ", error);
     });
@@ -97,8 +99,8 @@ const useApplicationData = () => {
   const toggleFav = (photo) => {
     dispatch({type: TOGGLE_FAV, payload: photo});
   };
-  const openModal = (photo) => {
-    dispatch({type: OPEN_MODAL, payload: photo});
+  const openModal = (photo_id) => {
+    dispatch({type: OPEN_MODAL, payload: photo_id});
   }
   const closeModal = () => {
     dispatch({type: CLOSE_MODAL, payload: null});
@@ -107,7 +109,6 @@ const useApplicationData = () => {
     dispatch({type: SET_TOPIC_ID, payload: topic_id});
   }
 
-  // console.log("State photos data/Array: ", state.photoData);
   return {
     topics: state.topicData,
     photos: state.photoData,

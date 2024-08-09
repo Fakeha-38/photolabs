@@ -5,13 +5,11 @@ import { useState } from "react";
 
 const PhotoListItem = ({singlePhoto, favourites, toggleFav, openModal}) => {
   /* Insert React */
-  // console.log("******* singlePhoto in PhotoListItem: ", singlePhoto);
   const {id, urls, user, profile, location, similar_photos} = singlePhoto;
-  // console.log("PHOTO LIST ITEM: ", singlePhoto);
   return (
     <li className="photo-list__item">
       <PhotoFavButton favourites={favourites} toggleFav={toggleFav}  singlePhoto={singlePhoto} />
-      <img src={urls.regular} alt={`image taken by ${user.username}`} className="photo-list__image" onClick={() => openModal(singlePhoto)} />
+      <img src={urls.regular} alt={`image taken by ${user.username}`} className="photo-list__image" onClick={() => openModal(singlePhoto.id)} />
       <div className="photo-list__user-details">
         <img src={user.profile} alt={`${user.username} profile img`} className="photo-list__user-profile" />
         <div className="photo-list__user-info">
